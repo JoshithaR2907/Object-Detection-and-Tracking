@@ -85,6 +85,10 @@ except:
 	total = -1
 
 # loop over frames from the video file stream
+vehicles = {
+	'cars': set(),
+	'trucks': set()
+}
 while True:
 	# read the next frame from the file
 	(grabbed, frame) = vs.read()
@@ -211,11 +215,13 @@ while True:
 			text = "{}: {}".format(LABELS[classIDs[i]], indexIDs[i])
 			if LABELS[classIDs[i]]=="car":
 				count_car = count_car+1
+				vehicles['cars'].add(indexIDs[i])
 				#textcar = "Detected cars : {}".format(indexIDs[i])
 				#cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 				print("cars:",indexIDs[i])
 			if LABELS[classIDs[i]]=="truck":
 				count_truck = count_truck+1
+				vehicles['trucks'].add(indexIDs[i])
 				#texttruck = "Detected trucks : {}".format(indexIDs[i])
 				#cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 				print("trucks:",indexIDs[i])
@@ -230,8 +236,8 @@ while True:
 	# draw counter
 	#cv2.putText(frame, "Signal Junction", (50,50), cv2.FONT_HERSHEY_DUPLEX, 3.0, (0, 255, 255), 6)
 	# counter += 1
-	cv2.putText(frame,"Detected cars : {}".format(counter_car),(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
-	cv2.putText(frame,"Detected trucks : {}".format(counter_truck),(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+	cv2.putText(frame,"Detected cars : {}".format(len(vehicles['cars'])),(60,90),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 3)
+	cv2.putText(frame,"Detected trucks : {}".format(len(vehicles['trucks'])),(60,180),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 3)
 
 	# saves image file
 	cv2.imwrite("output/frame-{}.png".format(frameIndex), frame)
