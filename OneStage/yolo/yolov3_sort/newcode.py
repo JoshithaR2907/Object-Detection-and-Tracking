@@ -218,13 +218,13 @@ while True:
 				vehicles['cars'].add(indexIDs[i])
 				#textcar = "Detected cars : {}".format(indexIDs[i])
 				#cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
-				print("cars:",indexIDs[i])
+				#print("cars:",indexIDs[i])
 			if LABELS[classIDs[i]]=="truck":
 				count_truck = count_truck+1
 				vehicles['trucks'].add(indexIDs[i])
 				#texttruck = "Detected trucks : {}".format(indexIDs[i])
 				#cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
-				print("trucks:",indexIDs[i])
+				#print("trucks:",indexIDs[i])
 			#cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 			#cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 			cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
@@ -236,8 +236,8 @@ while True:
 	# draw counter
 	#cv2.putText(frame, "Signal Junction", (50,50), cv2.FONT_HERSHEY_DUPLEX, 3.0, (0, 255, 255), 6)
 	# counter += 1
-	cv2.putText(frame,"Detected cars : {}".format(len(vehicles['cars'])),(60,90),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 3)
-	cv2.putText(frame,"Detected trucks : {}".format(len(vehicles['trucks'])),(60,180),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 3)
+	cv2.putText(frame,"Number of detected cars : {}".format(len(vehicles['cars'])),(60,70),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 2)
+	cv2.putText(frame,"Number of detected trucks : {}".format(len(vehicles['trucks'])),(60,1250),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 2)
 
 	# saves image file
 	cv2.imwrite("output/frame-{}.png".format(frameIndex), frame)
