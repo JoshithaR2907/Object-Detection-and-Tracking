@@ -16,6 +16,10 @@ tracker = Sort()
 memory = {}
 line = [(0, 500), (1920, 500)] #
 counter = 0
+count_car = 0
+count_truck = 0
+print("Initial cars:",count_car)
+print("Initial trucks:",count_truck)
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -197,6 +201,16 @@ while True:
 			# text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
 			#text = "{}".format(indexIDs[i])
 			text = "{}: {}".format(LABELS[classIDs[i]], indexIDs[i])
+			if LABELS[classIDs[i]]=="car":
+				count_car = count_car+1
+			textcar = "Detected cars : {}".format(count_car)
+			print("cars:",count_car)
+			if LABELS[classIDs[i]]=="truck":
+				count_truck = count_truck+1
+			texttruck = "Detected trucks : {}".format(count_truck)
+			print("trucks:",count_truck)
+			cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+			cv2.putText(frame,texttruck,(180,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 			cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 			i += 1
 
@@ -204,7 +218,7 @@ while True:
 	# cv2.line(frame, line[0], line[1], (0, 255, 255), 5)
 
 	# draw counter
-	cv2.putText(frame, "Signal Junction", (50,50), cv2.FONT_HERSHEY_DUPLEX, 3.0, (0, 255, 255), 6)
+	#cv2.putText(frame, "Signal Junction", (50,50), cv2.FONT_HERSHEY_DUPLEX, 3.0, (0, 255, 255), 6)
 	# counter += 1
 
 	# saves image file
