@@ -175,6 +175,8 @@ while True:
 
 	if len(boxes) > 0:
 		i = int(0)
+		count_car = 0
+		count_truck= 0
 		for box in boxes:
 			# extract the bounding box coordinates
 			(x, y) = (int(box[0]), int(box[1]))
@@ -202,19 +204,24 @@ while True:
 			#text = "{}".format(indexIDs[i])
 			text = "{}: {}".format(LABELS[classIDs[i]], indexIDs[i])
 			if LABELS[classIDs[i]]=="car":
-				#count_car = count_car+1
-				textcar = "Detected cars : {}".format(indexIDs[i])
-				cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
-				print("cars:",indexIDs[i])
+				count_car = count_car+1
+				#textcar = "Detected cars : {}".format(indexIDs[i])
+				#cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+				#print("cars:",indexIDs[i])
 			if LABELS[classIDs[i]]=="truck":
-				#count_truck = count_truck+1
-				texttruck = "Detected trucks : {}".format(indexIDs[i])
-				cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
-				print("trucks:",indexIDs[i])
+				count_truck = count_truck+1
+				#texttruck = "Detected trucks : {}".format(indexIDs[i])
+				#cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+				#print("trucks:",indexIDs[i])
 			#cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 			#cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 			cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 			i += 1
+
+	cv2.putText(frame,"Detected cars : {}".format(count_car),(90,90),cv2.FONT_HERSHEY_DUPLEX, 2, (0, 255, 255), 3)
+	print("cars:",count_car)
+	cv2.putText(frame,"Detected trucks : {}".format(count_truck),(90,180),cv2.FONT_HERSHEY_DUPLEX, 2, (0, 255, 255), 3)
+	print("trucks:",count_truck)
 
 	# draw line
 	# cv2.line(frame, line[0], line[1], (0, 255, 255), 5)
@@ -222,6 +229,8 @@ while True:
 	# draw counter
 	#cv2.putText(frame, "Signal Junction", (50,50), cv2.FONT_HERSHEY_DUPLEX, 3.0, (0, 255, 255), 6)
 	# counter += 1
+	#cv2.putText(frame,"Detected cars : {}".format(count_car),(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+	#cv2.putText(frame,"Detected trucks : {}".format(count_truck),(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 
 	# saves image file
 	cv2.imwrite("output/frame-{}.png".format(frameIndex), frame)
