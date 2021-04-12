@@ -175,8 +175,8 @@ while True:
 
 	if len(boxes) > 0:
 		i = int(0)
-		count_car = 0
-		count_truck= 0
+		#count_car = 0
+		#count_truck= 0
 		for box in boxes:
 			# extract the bounding box coordinates
 			(x, y) = (int(box[0]), int(box[1]))
@@ -218,9 +218,9 @@ while True:
 			cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 			i += 1
 
-	cv2.putText(frame,"Detected cars : {}".format(count_car),(90,90),cv2.FONT_HERSHEY_DUPLEX, 2, (0, 255, 255), 3)
+	cv2.putText(frame,"Number of detected cars : {}".format(count_car),(90,90),cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 0), 3)
 	print("cars:",count_car)
-	cv2.putText(frame,"Detected trucks : {}".format(count_truck),(90,180),cv2.FONT_HERSHEY_DUPLEX, 2, (0, 255, 255), 3)
+	cv2.putText(frame,"Number of detected trucks : {}".format(count_truck),(90,180),cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 0), 3)
 	print("trucks:",count_truck)
 
 	# draw line
