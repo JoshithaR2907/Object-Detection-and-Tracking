@@ -202,15 +202,17 @@ while True:
 			#text = "{}".format(indexIDs[i])
 			text = "{}: {}".format(LABELS[classIDs[i]], indexIDs[i])
 			if LABELS[classIDs[i]]=="car":
-				count_car = count_car+1
-			textcar = "Detected cars : {}".format(count_car)
-			print("cars:",count_car)
+				#count_car = count_car+1
+				textcar = "Detected cars : {}".format(indexIDs[i])
+				cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+				print("cars:",indexIDs[i])
 			if LABELS[classIDs[i]]=="truck":
-				count_truck = count_truck+1
-			texttruck = "Detected trucks : {}".format(count_truck)
-			print("trucks:",count_truck)
-			cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
-			cv2.putText(frame,texttruck,(180,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+				#count_truck = count_truck+1
+				texttruck = "Detected trucks : {}".format(indexIDs[i])
+				cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+				print("trucks:",indexIDs[i])
+			#cv2.putText(frame,textcar,(90,90),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
+			#cv2.putText(frame,texttruck,(90,180),cv2.FONT_HERSHEY_DUPLEX, 2.5, (0, 255, 255), 4)
 			cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 			i += 1
 
