@@ -237,7 +237,7 @@ while True:
 	#cv2.putText(frame, "Signal Junction", (50,50), cv2.FONT_HERSHEY_DUPLEX, 3.0, (0, 255, 255), 6)
 	# counter += 1
 	cv2.putText(frame,"Number of detected cars : {}".format(len(vehicles['cars'])),(60,70),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 2)
-	cv2.putText(frame,"Number of detected trucks : {}".format(len(vehicles['trucks'])),(60,1250),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 2)
+	cv2.putText(frame,"Number of detected trucks : {}".format(len(vehicles['trucks'])),(60,120),cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 2)
 
 	# saves image file
 	cv2.imwrite("output/frame-{}.png".format(frameIndex), frame)
